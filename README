@@ -1,0 +1,21 @@
+Simple minetest explorer.
+
+When launched, it will teleport your player around a rectangular spiral
+moving by 80 nodes at each steps; forcing mintest to generate map blocks.
+
+At each jump, it will report you your new position and the size of the spiral 
+(you are on a square 80*size nodes away from your start point).
+
+Two chat commands are available:
+/explore_map [stop_at_steps] : 
+  where stop_at_steps is an optional number.
+  Start exploring around the spiral; stopping after stop_at_steps steps if
+  specified; otherwise, loop indefinitely.
+
+/stop_explore :
+  Stop current exploration and go back to starting point 
+  (usefull if you started without specifying stop_at_steps)
+
+
+License: CC0
+
