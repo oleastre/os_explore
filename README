@@ -1,5 +1,38 @@
 Simple minetest explorer.
 
+License: CC0
+
+
+This mods adds two exploration modes:
+- emerge_area
+- teleport
+
+Emerge_area mode
+================
+
+When launched, we force minetest to load the specified map blocks. If a block
+does not exists, it will be automatically generated.
+
+The following chat command is available:
+/mapgen radius [max_height]:
+  where radius is a number and max_height is an optional number
+  This will ask minetest to load the square around you current player position,
+  from position-radius to position+radius on the x and z axis; effectively
+  creating a square of 2*radius.
+  If you specify the max_height parameter, it will extrude the square to a box
+  starting at your current player position height and ending at max_height.
+
+  Once started, this can not be stopped (except by stopping the server); but it 
+  works asynchronously. 
+  Once started, it will report you for each generated block: the remaining 
+  blocks count to visit, elapsed time and last generated block position.
+
+This mode is somewhat faster and more reliable than the teleport one.
+
+
+Teleport mode
+=============
+
 When launched, it will teleport your player around a rectangular spiral
 moving by 80 nodes at each steps; forcing mintest to generate map blocks.
 
@@ -16,6 +49,6 @@ Two chat commands are available:
   Stop current exploration and go back to starting point 
   (usefull if you started without specifying stop_at_steps)
 
-
-License: CC0
+If your server crashes because it can not keep generating blocks, you can 
+increase the hard coded wait time in the mod's init.lua file.
 
